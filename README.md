@@ -1,7 +1,7 @@
 # bayesian_examples
 Contains a few different examples of Bayesian methods, with varying complexity.
 
-## Required packages: 
+## Required Libraries: 
 matplotlib, numpy, pandas, scipy
 
 ## Example 1: Coin Flip (run coin_flip.py)
