@@ -40,3 +40,25 @@ def make_grids(dx, side_length, observations):
     x_obs, y_obs = observations[::, 0], observations[::, 1]
     state_grid, obs_grid = [x_state, y_state], [x_obs, y_obs]
     return state_grid, obs_grid
+
+def target_model(params):
+    # Parmaters: gamma, var_Y, var_x, var_v, prior_mean, prior_var_x, prior_var_v
+    gamma = params[0]
+    var_Y = params[1]
+    var_x, var_v = params[2], params[3]
+    prior_mean, prior_var_x, prior_var_v = params[4], params[5], params[6]
+    I_2 = np.identity(2)
+    Zero_2 = np.zeros((2, 2))
+    top = np.concatenate((I_2, I_2), axis=1)
+    bottom = np.concatenate((Zero_2, np.array([[1, -gamma], [-gamma, 1]])), axis=1)
+    G = np.concatenate((top, bottom))
+    F = np.concatenate((I_2, Zero_2), axis=1)
+    top = np.concatenate((var_x*I_2, Zero_2), axis=1)
+    bottom = np.concatenate((Zero_2, var_v*I_2), axis=1)
+    W = np.concatenate((top, bottom))
+    V = var_Y*I_2
+    top = np.concatenate((prior_var_x*I_2, Zero_2), axis=1)
+    bottom = np.concatenate((Zero_2, prior_var_v*I_2), axis=1)
+    prior_var = np.concatenate((top, bottom))
+    model = kf.DLM([G, W], [F, V], [prior_mean, prior_var], np.array([0, 0, 0, 0]))
+    return model

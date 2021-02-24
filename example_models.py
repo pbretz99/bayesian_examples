@@ -27,6 +27,16 @@ def default_RWWN_vel_model():
     model = kf.DLM(state_params, obs_params, prior, np.array([0, 0]))
     return model 
 
+def default_target_params():
+    # Create default target tracking model
+    gamma = 0.01
+    var_Y, var_x, var_v = 1, 0.1, 0.05
+    var_p = 20
+    prior_mean = np.array([0.0, 0.0, 1.0, 1.0])
+    prior_var_x, prior_var_v = 20, 20
+    return [gamma, var_Y, var_x, var_v, prior_mean, prior_var_x, prior_var_v]
+
+
 def default_Heat_grid():
     # Create default model:
     # 5 meter x 5 meter room

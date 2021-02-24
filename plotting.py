@@ -31,3 +31,12 @@ def one_d_kalman_plot(theta, Y, fit_values, fit_var):
     ax.fill_between(df.index, df['Lower'].astype(float), df['Upper'].astype(float), alpha=0.25)
     plt.title('Kalman Filter (90% CI)')
     plt.show()
+
+def target_plot(Y, fit_values, pad=1):
+    fig, ax = plt.subplots(figsize=(7, 7))
+    ax.set_xlim(np.min(Y[::,0])-pad, np.max(Y[::,0])+pad)
+    ax.set_ylim(np.min(Y[::,1])-pad, np.max(Y[::,1])+pad)
+    ax.plot(Y[::,0], Y[::,1], '-o', alpha=0.5)
+    ax.plot(fit_values[::,0], fit_values[::,1], c='green', alpha=0.75)
+    plt.title('Target Tracking')
+    plt.show()
