@@ -74,7 +74,7 @@ class DLM:
             N, p = int(np.sqrt(W.size)), int(np.sqrt(V.size))
             theta = np.zeros((length, N)) # Each row is a given time
             Y = np.zeros((length, p)) # Ditto
-            nu = multivariate_normal.rvs(np.zeros(p), V, length)
+            nu = multivariate_normal.rvs(np.zeros(p), V, length).reshape((length, p))
             omega = multivariate_normal.rvs(np.zeros(N), W, length)
             theta[0,::] = init
             Y[0,::] = F.dot(theta[0,::]) + nu[0,::]
