@@ -15,3 +15,6 @@ This program simulates a random walk with time-varying velocity and observationa
 
 ## Example 4: Multi Dimensional Kalman Filter (run Heat_Eqn.py)
 This program simulates temperature on a grid, with irregularly spaced thermometers. It then applies the Kalman filter to the simulated data to estimate the temperature at each grid point.
+
+## Example 5: Target Tracking (run Target_Tracking.py)
+This program simulates the movement of a target in 2-d, with noisy observations. The target's movement is governed by a random walk with time-varying velocity that follows an Integrated Ornstein-Uhlenbeck process (essentially, the speed moves randomly, but tends towards a pre-set value). It then applies the Kalman filter to the simulated 'pings' to estimate the true position of the target at each time.
