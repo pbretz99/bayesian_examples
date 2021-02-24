@@ -2,7 +2,8 @@
 Contains a few different examples of Bayesian methods, with varying complexity.
 
 ## Required Libraries: 
-matplotlib, numpy, pandas, scipy
+### celluloid, matplotlib, numpy, pandas, scipy
+Note: the celluloid package is only necessary for the animations of the 2-d heat equation and target tracking programs. These will run just fine if you comment out the line that runs the animation.
 
 ## Example 1: Coin Flip (run Coin_Flip.py)
 The program prompts you to choose beta hyperparameters for the prior distribution on the probability of flipping heads, the number of heads, and the number of flips. It then plots the prior and posterior distributions (if they are proper) and compares the Bayesian estimate to the frequentist estimate.
@@ -13,7 +14,7 @@ This program simulates a random walk with noise, and then applies the Kalman fil
 ## Example 3: Random Walk with Velocity and Noise (run RWWN_vel.py)
 This program simulates a random walk with time-varying velocity and observational noise, and then applies the Kalman filter to the simulated data to estimate the true state (position and velocity). It then plots the true position, observed position, estimated position, and 90% credible intervals. You can use the default parameters or choose your own.
 
-## Example 4: Multi Dimensional Kalman Filter (run Heat_Eqn.py)
+## Example 4: Two Dimensional Heat Equation (run Heat_Eqn.py)
 This program simulates temperature on a grid, with irregularly spaced thermometers. It then applies the Kalman filter to the simulated data to estimate the temperature at each grid point.
 
 ## Example 5: Target Tracking (run Target_Tracking.py)
